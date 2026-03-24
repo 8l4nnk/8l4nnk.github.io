@@ -1,0 +1,114 @@
+---
+import "@fontsource/inter/400.css";
+import "@fontsource/inter/500.css";
+import "@fontsource/inter/600.css";
+import "@fontsource/inter/700.css";
+import "@fontsource-variable/jetbrains-mono";
+import "../styles/custom.css";
+import { Icon } from "astro-icon/components";
+import { siteConfig } from "../config";
+
+interface Props {
+	title?: string;
+	description?: string;
+}
+
+const { title, description } = Astro.props;
+
+const pageTitle = title
+	? `${title} — ${siteConfig.title}`
+	: `${siteConfig.title} — ${siteConfig.subtitle}`;
+
+const currentPath = Astro.url.pathname;
+
+const navLinks = [
+	{ name: "Disclosures", href: "/disclosures/" },
+	{ name: "Experience", href: "/experience/" },
+	{ name: "Achievements", href: "/achievements/" },
+	{ name: "About", href: "/about/" },
+];
+
+function isActive(href: string) {
+	if (href === "/") return currentPath === "/";
+	return currentPath.startsWith(href);
+}
+---
+
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>{pageTitle}</title>
+		<meta name="description" content={description || pageTitle} />
+		<meta name="author" content="8l4nk" />
+		<meta property="og:title" content={pageTitle} />
+		<meta property="og:description" content={description || pageTitle} />
+		<meta property="og:type" content="website" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<slot name="head" />
+	</head>
+	<body class="bg-warm-bg text-stone-800 min-h-screen flex flex-col antialiased">
+
+		<!-- Header -->
+		<header class="sticky top-0 z-50 backdrop-blur-xl bg-warm-bg/80 border-b border-warm-border/60">
+			<nav class="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
+				<a href="/" class="font-mono font-bold text-lg tracking-tight hover:text-accent-dim transition-colors shrink-0">
+					8l4nk<span class="text-accent-dim">.</span>
+				</a>
+				<div class="flex items-center gap-0.5 overflow-x-auto hide-scrollbar">
+					{navLinks.map(link => (
+						<a
+							href={link.href}
+							class:list={[
+								"px-3 py-1.5 rounded-lg text-sm whitespace-nowrap transition-colors",
+								isActive(link.href)
+									? "text-accent-muted bg-accent-light/60"
+									: "text-stone-500 hover:text-stone-800 hover:bg-accent-soft/50"
+							]}
+						>
+							{link.name}
+						</a>
+					))}
+					<a
+						href="https://github.com/8l4nnk"
+						target="_blank"
+						rel="noopener noreferrer"
+						class="ml-1 p-2 text-stone-400 hover:text-stone-700 transition-colors shrink-0"
+						aria-label="GitHub"
+					>
+						<Icon name="fa6-brands:github" class="w-5 h-5" />
+					</a>
+				</div>
+			</nav>
+		</header>
+
+		<!-- Main Content -->
+		<main class="flex-1">
+			<slot />
+		</main>
+
+		<!-- Footer -->
+		<footer class="border-t border-warm-border/60 mt-auto">
+			<div class="max-w-5xl mx-auto px-6 py-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-stone-400">
+				<div class="font-mono">
+					&copy; {new Date().getFullYear()} 8l4nk
+				</div>
+				<div class="flex items-center gap-4 text-stone-400">
+					<span class="font-mono text-xs">Just a curious person</span>
+				</div>
+			</div>
+		</footer>
+
+	</body>
+</html>
+
+<style is:global>
+	.hide-scrollbar {
+		scrollbar-width: none;
+		-ms-overflow-style: none;
+	}
+	.hide-scrollbar::-webkit-scrollbar {
+		display: none;
+	}
+</style>
