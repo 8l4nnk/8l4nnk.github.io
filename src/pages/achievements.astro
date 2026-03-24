@@ -5,9 +5,15 @@ import { achievements, type AchievementType } from "../data/portfolio";
 const typeConfig: Record<AchievementType, { color: string; icon: string }> = {
 	CTF: { color: "bg-purple-50 text-purple-600 border-purple-200", icon: "🚩" },
 	Competition: { color: "bg-sky-50 text-sky-600 border-sky-200", icon: "🏅" },
-	Certification: { color: "bg-emerald-50 text-emerald-600 border-emerald-200", icon: "📜" },
+	Certification: {
+		color: "bg-emerald-50 text-emerald-600 border-emerald-200",
+		icon: "📜",
+	},
 	Award: { color: "bg-amber-50 text-amber-700 border-amber-200", icon: "🏆" },
-	Publication: { color: "bg-blue-50 text-blue-600 border-blue-200", icon: "📄" },
+	Publication: {
+		color: "bg-blue-50 text-blue-600 border-blue-200",
+		icon: "📄",
+	},
 	Other: { color: "bg-stone-100 text-stone-500 border-stone-200", icon: "📌" },
 };
 
@@ -17,8 +23,15 @@ for (const a of achievements) {
 	grouped.get(a.type)!.push(a);
 }
 
-const typeOrder: AchievementType[] = ["CTF", "Competition", "Certification", "Award", "Publication", "Other"];
-const sortedTypes = typeOrder.filter(t => grouped.has(t));
+const typeOrder: AchievementType[] = [
+	"CTF",
+	"Competition",
+	"Certification",
+	"Award",
+	"Publication",
+	"Other",
+];
+const sortedTypes = typeOrder.filter((t) => grouped.has(t));
 ---
 
 <BaseLayout title="Achievements" description="실적 및 수상 경력">

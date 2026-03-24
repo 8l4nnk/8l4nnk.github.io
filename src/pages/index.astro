@@ -1,9 +1,15 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import { disclosures, experience, achievements, skills, type Severity } from "../data/portfolio";
+import {
+	disclosures,
+	experience,
+	achievements,
+	skills,
+	type Severity,
+} from "../data/portfolio";
 
-const recentCTF = achievements.filter(a => a.type === "CTF").slice(0, 5);
-const careers = experience.filter(e => e.type === "career");
+const recentCTF = achievements.filter((a) => a.type === "CTF").slice(0, 5);
+const careers = experience.filter((e) => e.type === "career");
 
 const severityColor: Record<Severity, string> = {
 	Critical: "bg-red-50 text-red-600 border-red-200",
