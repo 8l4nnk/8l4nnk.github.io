@@ -2,19 +2,13 @@
 import { type AchievementType, achievements } from "../data/portfolio";
 import BaseLayout from "../layouts/BaseLayout.astro";
 
-const typeConfig: Record<AchievementType, { color: string; icon: string }> = {
-	CTF: { color: "bg-purple-50 text-purple-600 border-purple-200", icon: "🚩" },
-	Competition: { color: "bg-sky-50 text-sky-600 border-sky-200", icon: "🏅" },
-	Certification: {
-		color: "bg-emerald-50 text-emerald-600 border-emerald-200",
-		icon: "📜",
-	},
-	Award: { color: "bg-amber-50 text-amber-700 border-amber-200", icon: "🏆" },
-	Publication: {
-		color: "bg-blue-50 text-blue-600 border-blue-200",
-		icon: "📄",
-	},
-	Other: { color: "bg-stone-100 text-stone-500 border-stone-200", icon: "📌" },
+const typeConfig: Record<AchievementType, { icon: string; bgClass: string }> = {
+	CTF: { icon: "flag", bgClass: "bg-secondary" },
+	Competition: { icon: "emoji_events", bgClass: "bg-primary" },
+	Certification: { icon: "verified", bgClass: "bg-tertiary" },
+	Award: { icon: "military_tech", bgClass: "bg-primary" },
+	Publication: { icon: "article", bgClass: "bg-tertiary-dim" },
+	Other: { icon: "star", bgClass: "bg-outline" },
 };
 
 const grouped = new Map<AchievementType, typeof achievements>();
@@ -32,47 +26,42 @@ const typeOrder: AchievementType[] = [
 	"Other",
 ];
 const sortedTypes = typeOrder.filter((t) => grouped.has(t));
+const typeLabel: Record<string, string> = { Competition: "경진대회" };
 ---
 
 <BaseLayout title="Achievements" description="실적 및 수상 경력">
-	<div class="max-w-5xl mx-auto px-6 py-12">
-		<h1 class="text-3xl font-bold text-stone-800 mb-2 animate-fade-up">Achievements</h1>
-		<p class="text-stone-400 mb-10 animate-fade-up delay-1">
-			CTF, 경진대회, 수상 경력
-		</p>
+	<div class="space-y-24">
+		<div class="space-y-4">
+			<h1 class="font-headline text-3xl md:text-5xl font-bold text-primary tracking-tight animate-fade-up">Achievements</h1>
+			<p class="text-on-surface-variant font-body text-lg animate-fade-up delay-1">CTF, 경진대회, 수상 경력</p>
+		</div>
 
 		{sortedTypes.map((type) => {
 			const items = grouped.get(type)!;
 			const config = typeConfig[type];
-			const typeLabel = type === "Competition" ? "경진대회" : type;
+			const label = typeLabel[type] || type;
 			return (
-				<section class="mb-10 animate-fade-up">
-					<div class="flex items-center gap-3 mb-5">
-						<span class="text-xl">{config.icon}</span>
-						<h2 class="text-lg font-semibold text-stone-700">{typeLabel}</h2>
-						<span class="text-xs text-stone-400 font-mono">{items.length}</span>
-						<div class="flex-1 h-px bg-gradient-to-r from-warm-border to-transparent"></div>
+				<section class="bg-surface-container-lowest rounded-xl p-6 md:p-14 shadow-ambient">
+					<div class="flex items-center gap-4 mb-10">
+						<div class:list={["w-12 h-12 rounded-full flex items-center justify-center shrink-0 shadow-lg", config.bgClass, `shadow-${type === 'CTF' ? 'secondary' : 'primary'}/20`]}>
+							<span class="material-symbols-outlined text-white text-xl" style="font-variation-settings: 'FILL' 1;">{config.icon}</span>
+						</div>
+						<div>
+							<h2 class="font-headline text-2xl font-bold text-primary">{label}</h2>
+							<p class="text-on-surface-variant text-sm font-body">{items.length} entries</p>
+						</div>
 					</div>
 
 					<div class="grid gap-3">
-						{items.map(a => (
-							<div class="card-warm flex items-start gap-4 p-4 rounded-xl border border-warm-border/60 bg-white shadow-sm">
-								<span class:list={[
-									"shrink-0 w-[6.5rem] text-center inline-block px-2 py-0.5 rounded-md text-xs font-medium border font-mono",
-									config.color,
-								]}>
+						{items.map((a) => (
+							<div class="flex items-start gap-4 p-4 rounded-xl bg-surface-container-low/50 hover:bg-surface-container-low transition-colors">
+								<span class="shrink-0 w-[6.5rem] text-center px-2 py-1 rounded-full bg-surface-container text-on-surface-variant text-xs font-bold uppercase tracking-widest font-label">
 									{a.date}
 								</span>
 								<div class="min-w-0">
-									<h3 class="font-semibold text-stone-800 text-sm">
-										{a.url ? (
-											<a href={a.url} target="_blank" rel="noopener noreferrer" class="hover:text-accent-dim transition-colors">
-												{a.title}
-											</a>
-										) : a.title}
-									</h3>
+									<span class="font-headline font-bold text-on-surface text-sm">{a.title}</span>
 									{a.description && (
-										<p class="text-sm text-stone-400 mt-0.5">{a.description}</p>
+										<p class="text-on-surface-variant font-body text-xs mt-0.5">{a.description}</p>
 									)}
 								</div>
 							</div>
