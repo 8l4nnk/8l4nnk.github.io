@@ -43,20 +43,20 @@ const careers = experience.filter((e) => e.type === "career");
 			</div>
 		</div>
 
-		<div class="lg:col-span-4 relative hidden lg:block">
+		<div class="lg:col-span-4 relative hidden lg:flex justify-center">
 			<div class="absolute inset-0 bg-primary-container/30 rounded-full blur-[80px] -z-10"></div>
-			<div class="space-y-4">
-				<div class="bg-secondary-container/40 p-4 rounded-xl shadow-ambient inline-flex items-center gap-3">
-					<span class="material-symbols-outlined text-on-secondary-container" style="font-variation-settings: 'FILL' 1;">bug_report</span>
-					<span class="text-on-secondary-container font-bold text-sm font-label">Exploit Dev</span>
+			<div class="relative">
+				<div class="w-80 h-80 xl:w-96 xl:h-96 rounded-full overflow-hidden shadow-ambient-lg ring-4 ring-secondary-container">
+					<img src="/avatar.png" alt="8l4nk" class="w-full h-full object-cover" />
 				</div>
-				<div class="bg-secondary-container/40 p-4 rounded-xl shadow-ambient inline-flex items-center gap-3 ml-8">
-					<span class="material-symbols-outlined text-on-secondary-container" style="font-variation-settings: 'FILL' 1;">security</span>
-					<span class="text-on-secondary-container font-bold text-sm font-label">CVE Hunter</span>
+				<!-- Floating tags -->
+				<div class="absolute -top-2 -right-8 bg-secondary-container/60 px-3 py-1.5 rounded-full shadow-ambient flex items-center gap-2">
+					<span class="material-symbols-outlined text-on-secondary-container text-sm" style="font-variation-settings: 'FILL' 1;">security</span>
+					<span class="text-on-secondary-container font-bold text-xs font-label">CVE Hunter</span>
 				</div>
-				<div class="bg-primary-container/50 p-4 rounded-xl shadow-ambient inline-flex items-center gap-3">
-					<span class="material-symbols-outlined text-on-primary-container" style="font-variation-settings: 'FILL' 1;">flag</span>
-					<span class="text-on-primary-container font-bold text-sm font-label">CTF Player</span>
+				<div class="absolute -bottom-2 -left-6 bg-primary-container/60 px-3 py-1.5 rounded-full shadow-ambient flex items-center gap-2">
+					<span class="material-symbols-outlined text-on-primary-container text-sm" style="font-variation-settings: 'FILL' 1;">flag</span>
+					<span class="text-on-primary-container font-bold text-xs font-label">CTF Player</span>
 				</div>
 			</div>
 		</div>
