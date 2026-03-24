@@ -34,7 +34,7 @@ const careers = experience.filter((e) => e.type === "career");
 			</p>
 
 			<div class="flex flex-wrap gap-4 pt-4 animate-fade-up delay-3">
-				<a href="/achievements/" class="bg-primary text-on-primary px-8 py-4 rounded-full font-bold text-lg hover:bg-primary-dim transition-all shadow-xl shadow-primary/10 active:scale-95">
+				<a href="/achievements/" class="bg-primary-container text-on-primary-container px-8 py-4 rounded-full font-bold text-lg hover:bg-secondary-container transition-all shadow-xl shadow-primary/10 active:scale-95">
 					See my work
 				</a>
 				<a href="/about/" class="bg-surface-container-highest text-on-surface px-8 py-4 rounded-full font-bold text-lg hover:bg-surface-container-high transition-all active:scale-95">
@@ -46,9 +46,9 @@ const careers = experience.filter((e) => e.type === "career");
 		<div class="lg:col-span-4 relative hidden lg:block">
 			<div class="absolute inset-0 bg-primary-container/30 rounded-full blur-[80px] -z-10"></div>
 			<div class="space-y-4">
-				<div class="bg-tertiary-container/40 p-4 rounded-xl shadow-ambient inline-flex items-center gap-3">
-					<span class="material-symbols-outlined text-on-tertiary-container" style="font-variation-settings: 'FILL' 1;">bug_report</span>
-					<span class="text-on-tertiary-container font-bold text-sm font-label">Exploit Dev</span>
+				<div class="bg-secondary-container/40 p-4 rounded-xl shadow-ambient inline-flex items-center gap-3">
+					<span class="material-symbols-outlined text-on-secondary-container" style="font-variation-settings: 'FILL' 1;">bug_report</span>
+					<span class="text-on-secondary-container font-bold text-sm font-label">Exploit Dev</span>
 				</div>
 				<div class="bg-secondary-container/40 p-4 rounded-xl shadow-ambient inline-flex items-center gap-3 ml-8">
 					<span class="material-symbols-outlined text-on-secondary-container" style="font-variation-settings: 'FILL' 1;">security</span>
@@ -69,31 +69,31 @@ const careers = experience.filter((e) => e.type === "career");
 			<p class="text-on-surface-variant font-medium font-body text-sm md:text-base">Tracking the impact.</p>
 		</div>
 		<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-			<a href="/disclosures/" class="tonal-card bg-surface-container-low p-6 md:p-10 rounded-xl space-y-4 group">
+			<a href="/disclosures/" class="tonal-card bg-secondary-container/40 p-6 md:p-10 rounded-xl space-y-4 group">
 				<div class="bg-surface-container-lowest w-16 h-16 rounded-full flex items-center justify-center shadow-ambient group-hover:scale-110 transition-transform">
-					<span class="material-symbols-outlined text-primary text-3xl" style="font-variation-settings: 'FILL' 1;">security</span>
+					<span class="material-symbols-outlined text-secondary text-3xl" style="font-variation-settings: 'FILL' 1;">security</span>
 				</div>
 				<div>
-					<div class="text-3xl md:text-4xl font-headline font-bold text-primary">{disclosures.length}</div>
-					<div class="text-on-surface-variant font-medium uppercase tracking-widest text-xs font-label">CVEs Reported</div>
+					<div class="text-3xl md:text-4xl font-headline font-bold text-secondary">{disclosures.length}</div>
+					<div class="text-on-secondary-container/70 font-medium uppercase tracking-widest text-xs font-label">CVEs Reported</div>
 				</div>
 			</a>
-			<a href="/achievements/" class="tonal-card bg-primary-container p-6 md:p-10 rounded-xl space-y-4 group">
+			<a href="/achievements/" class="tonal-card bg-primary-container/60 p-6 md:p-10 rounded-xl space-y-4 group">
 				<div class="bg-surface-container-lowest w-16 h-16 rounded-full flex items-center justify-center shadow-ambient group-hover:scale-110 transition-transform">
 					<span class="material-symbols-outlined text-primary text-3xl" style="font-variation-settings: 'FILL' 1;">military_tech</span>
 				</div>
 				<div>
-					<div class="text-3xl md:text-4xl font-headline font-bold text-on-primary-container">{achievements.filter(a => a.type === "CTF").length}</div>
+					<div class="text-3xl md:text-4xl font-headline font-bold text-primary">{achievements.filter(a => a.type === "CTF").length}</div>
 					<div class="text-on-primary-container/70 font-medium uppercase tracking-widest text-xs font-label">CTF Competitions</div>
 				</div>
 			</a>
-			<a href="/experience/" class="tonal-card bg-tertiary-container/30 p-6 md:p-10 rounded-xl space-y-4 group">
+			<a href="/experience/" class="tonal-card bg-secondary-container/40 p-6 md:p-10 rounded-xl space-y-4 group">
 				<div class="bg-surface-container-lowest w-16 h-16 rounded-full flex items-center justify-center shadow-ambient group-hover:scale-110 transition-transform">
-					<span class="material-symbols-outlined text-tertiary text-3xl" style="font-variation-settings: 'FILL' 1;">terminal</span>
+					<span class="material-symbols-outlined text-secondary text-3xl" style="font-variation-settings: 'FILL' 1;">terminal</span>
 				</div>
 				<div>
-					<div class="text-3xl md:text-4xl font-headline font-bold text-tertiary">{skills.reduce((acc, g) => acc + g.items.length, 0)}+</div>
-					<div class="text-tertiary/70 font-medium uppercase tracking-widest text-xs font-label">Core Skills</div>
+					<div class="text-3xl md:text-4xl font-headline font-bold text-secondary">{skills.reduce((acc, g) => acc + g.items.length, 0)}+</div>
+					<div class="text-secondary/70 font-medium uppercase tracking-widest text-xs font-label">Core Skills</div>
 				</div>
 			</a>
 		</div>
@@ -136,9 +136,9 @@ const careers = experience.filter((e) => e.type === "career");
 			))}
 		</div>
 		<div class="flex gap-3">
-			<span class="px-3 py-1.5 bg-error-container/20 text-error rounded-full text-xs font-bold font-label uppercase tracking-widest">Critical {disclosures.filter(d => d.severity === "Critical").length}</span>
-			<span class="px-3 py-1.5 bg-secondary-container/50 text-secondary rounded-full text-xs font-bold font-label uppercase tracking-widest">High {disclosures.filter(d => d.severity === "High").length}</span>
-			<span class="px-3 py-1.5 bg-surface-container-highest text-on-surface-variant rounded-full text-xs font-bold font-label uppercase tracking-widest">Medium {disclosures.filter(d => d.severity === "Medium").length}</span>
+			<span class="px-3 py-1.5 bg-secondary-container text-on-secondary-fixed rounded-full text-xs font-bold font-label uppercase tracking-widest">Critical {disclosures.filter(d => d.severity === "Critical").length}</span>
+			<span class="px-3 py-1.5 bg-primary-container/60 text-primary rounded-full text-xs font-bold font-label uppercase tracking-widest">High {disclosures.filter(d => d.severity === "High").length}</span>
+			<span class="px-3 py-1.5 bg-surface-container text-on-surface-variant rounded-full text-xs font-bold font-label uppercase tracking-widest">Medium {disclosures.filter(d => d.severity === "Medium").length}</span>
 		</div>
 		<p class="text-sm text-on-surface-variant/60 font-body mt-6 italic">All CVEs currently reserved — details pending vendor patch.</p>
 	</section>
@@ -168,7 +168,7 @@ const careers = experience.filter((e) => e.type === "career");
 		<h2 class="font-headline text-3xl font-bold text-primary tracking-tight mb-8">Skill Set</h2>
 		<div class="flex flex-wrap gap-3">
 			{skills.flatMap(g => g.items).map(item => (
-				<span class="px-5 py-2.5 bg-tertiary-container/30 text-on-tertiary-container rounded-full font-label font-bold text-sm hover:bg-tertiary-container/50 transition-colors">{item}</span>
+				<span class="px-5 py-2.5 bg-secondary-container/30 text-on-secondary-container rounded-full font-label font-bold text-sm hover:bg-secondary-container/50 transition-colors">{item}</span>
 			))}
 		</div>
 	</section>
@@ -176,13 +176,13 @@ const careers = experience.filter((e) => e.type === "career");
 	<!-- CTA -->
 	<section class="text-center py-20 relative overflow-hidden bg-primary-container/20 rounded-xl mb-8">
 		<div class="absolute -bottom-10 -left-10 w-40 h-40 bg-secondary/10 rounded-full blur-3xl"></div>
-		<div class="absolute -top-10 -right-10 w-40 h-40 bg-tertiary/10 rounded-full blur-3xl"></div>
+		<div class="absolute -top-10 -right-10 w-40 h-40 bg-secondary/10 rounded-full blur-3xl"></div>
 		<div class="relative z-10 space-y-6 max-w-2xl mx-auto px-6">
 			<h2 class="font-headline text-4xl md:text-5xl font-bold text-primary tracking-tight">Ready to build something secure?</h2>
 			<p class="text-lg text-on-surface-variant font-body leading-relaxed">궁금한 점이나 협업 제안이 있다면 언제든 연락주세요.</p>
 			<div class="flex flex-col sm:flex-row gap-4 justify-center items-center pt-4">
-				<a href="/about/" class="bg-primary text-on-primary px-10 py-4 rounded-full font-bold text-lg hover:bg-primary-dim transition-all shadow-xl shadow-primary/15 active:scale-95">Get in Touch</a>
-				<a href="https://github.com/8l4nnk" target="_blank" class="bg-surface-container-lowest/80 text-primary px-10 py-4 rounded-full font-bold text-lg hover:bg-surface-container-lowest transition-all active:scale-95">Explore GitHub</a>
+				<a href="/about/" class="bg-secondary text-on-secondary px-10 py-4 rounded-full font-bold text-lg hover:bg-secondary-dim transition-all shadow-xl shadow-secondary/15 active:scale-95">Get in Touch</a>
+				<a href="https://github.com/8l4nnk" target="_blank" class="bg-surface-container-lowest/80 text-secondary px-10 py-4 rounded-full font-bold text-lg hover:bg-surface-container-lowest transition-all active:scale-95">Explore GitHub</a>
 			</div>
 		</div>
 	</section>

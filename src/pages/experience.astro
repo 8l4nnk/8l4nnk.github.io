@@ -21,7 +21,7 @@ const activities = experience.filter((e) => e.type === "activity");
 
 					{careers.map((exp) => (
 						<div class="relative pl-12 md:pl-0 md:flex md:flex-row md:gap-8 md:items-start">
-							<div class="absolute left-0 md:static z-10 w-8 h-8 md:w-12 md:h-12 rounded-full bg-primary flex items-center justify-center shrink-0 shadow-lg shadow-primary/20 top-0">
+							<div class="absolute left-0 md:static z-10 w-8 h-8 md:w-12 md:h-12 rounded-full bg-secondary flex items-center justify-center shrink-0 shadow-lg shadow-secondary/20 top-0">
 								<span class="material-symbols-outlined text-white text-sm md:text-xl" style="font-variation-settings: 'FILL' 1;">rocket_launch</span>
 							</div>
 							<div class="space-y-2 pt-0 md:pt-1">
@@ -51,8 +51,8 @@ const activities = experience.filter((e) => e.type === "activity");
 				<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
 					{activities.map((act) => (
 						<div class="tonal-card bg-surface-container-lowest p-8 rounded-xl shadow-ambient space-y-3">
-							<div class="bg-tertiary-container/30 w-12 h-12 rounded-full flex items-center justify-center">
-								<span class="material-symbols-outlined text-tertiary text-xl" style="font-variation-settings: 'FILL' 1;">school</span>
+							<div class="w-12 h-12 rounded-full bg-secondary flex items-center justify-center shadow-lg shadow-secondary/20">
+								<span class="material-symbols-outlined text-white text-xl" style="font-variation-settings: 'FILL' 1;">school</span>
 							</div>
 							<h3 class="font-headline font-bold text-on-surface text-lg">{act.organization}</h3>
 							{act.role && <p class="text-on-surface-variant font-body text-sm">{act.role}</p>}
