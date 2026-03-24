@@ -1,12 +1,12 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro";
 import {
+	achievements,
 	disclosures,
 	experience,
-	achievements,
-	skills,
 	type Severity,
+	skills,
 } from "../data/portfolio";
+import BaseLayout from "../layouts/BaseLayout.astro";
 
 const recentCTF = achievements.filter((a) => a.type === "CTF").slice(0, 5);
 const careers = experience.filter((e) => e.type === "career");

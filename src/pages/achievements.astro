@@ -1,6 +1,6 @@
 ---
+import { type AchievementType, achievements } from "../data/portfolio";
 import BaseLayout from "../layouts/BaseLayout.astro";
-import { achievements, type AchievementType } from "../data/portfolio";
 
 const typeConfig: Record<AchievementType, { color: string; icon: string }> = {
 	CTF: { color: "bg-purple-50 text-purple-600 border-purple-200", icon: "🚩" },
@@ -20,7 +20,7 @@ const typeConfig: Record<AchievementType, { color: string; icon: string }> = {
 const grouped = new Map<AchievementType, typeof achievements>();
 for (const a of achievements) {
 	if (!grouped.has(a.type)) grouped.set(a.type, []);
-	grouped.get(a.type)!.push(a);
+	grouped.get(a.type)?.push(a);
 }
 
 const typeOrder: AchievementType[] = [
