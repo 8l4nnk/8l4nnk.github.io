@@ -54,16 +54,16 @@ const typeLabel: Record<string, string> = { Competition: "경진대회" };
 
 					<div class="grid gap-3">
 						{items.map((a) => (
-							<div class="flex items-start gap-4 p-4 rounded-xl bg-surface-container-low/50 hover:bg-surface-container-low transition-colors">
-								<span class="shrink-0 w-[6.5rem] text-center px-2 py-1 rounded-full bg-surface-container text-on-surface-variant text-xs font-bold uppercase tracking-widest font-label">
-									{a.date}
-								</span>
-								<div class="min-w-0">
+							<div class="p-4 rounded-xl bg-surface-container-low/50 hover:bg-surface-container-low transition-colors">
+								<div class="flex items-center gap-3">
+									<span class="shrink-0 w-[6.5rem] text-center px-2 py-0.5 rounded-full bg-surface-container text-on-surface-variant text-xs font-bold uppercase tracking-widest font-label">
+										{a.date}
+									</span>
 									<span class="font-headline font-bold text-on-surface text-sm">{a.title}</span>
-									{a.description && (
-										<p class="text-on-surface-variant font-body text-xs mt-0.5">{a.description}</p>
-									)}
 								</div>
+								{a.description && (
+									<div class="text-on-surface-variant font-body text-xs mt-1" style="margin-left: calc(6.5rem + 0.75rem)">{a.description}</div>
+								)}
 							</div>
 						))}
 					</div>

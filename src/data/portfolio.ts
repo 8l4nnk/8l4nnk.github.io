@@ -173,7 +173,7 @@ export const achievements: Achievement[] = [
 		title: "ENKI RedTeam CTF 2위",
 		type: "CTF",
 		date: "2026.03.22",
-		description: "",
+		description: "개인전",
 	},
 	{
 		title: "SUCTF 2위",
@@ -227,7 +227,7 @@ export const achievements: Achievement[] = [
 		title: "AI TOP 100 Final",
 		type: "Competition",
 		date: "2026.03.14",
-		description: "",
+		description: "개인전",
 	},
 ];
 
