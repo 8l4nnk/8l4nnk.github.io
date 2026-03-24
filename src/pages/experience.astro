@@ -2,8 +2,8 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { experience } from "../data/portfolio";
 
-const careers = experience.filter(e => e.type === "career");
-const activities = experience.filter(e => e.type === "activity");
+const careers = experience.filter((e) => e.type === "career");
+const activities = experience.filter((e) => e.type === "activity");
 ---
 
 <BaseLayout title="Experience" description="경력 및 활동">

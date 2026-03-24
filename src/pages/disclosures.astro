@@ -10,9 +10,11 @@ const severityColor: Record<Severity, string> = {
 	Info: "bg-stone-100 text-stone-500 border-stone-200",
 };
 
-const criticalCount = disclosures.filter(d => d.severity === "Critical").length;
-const highCount = disclosures.filter(d => d.severity === "High").length;
-const mediumCount = disclosures.filter(d => d.severity === "Medium").length;
+const criticalCount = disclosures.filter(
+	(d) => d.severity === "Critical",
+).length;
+const highCount = disclosures.filter((d) => d.severity === "High").length;
+const mediumCount = disclosures.filter((d) => d.severity === "Medium").length;
 ---
 
 <BaseLayout title="Disclosures" description="취약점 제보 (CVE)">
