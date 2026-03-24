@@ -3,80 +3,118 @@ import {
 	achievements,
 	disclosures,
 	experience,
-	type Severity,
 	skills,
 } from "../data/portfolio";
 import BaseLayout from "../layouts/BaseLayout.astro";
 
 const recentCTF = achievements.filter((a) => a.type === "CTF").slice(0, 5);
 const careers = experience.filter((e) => e.type === "career");
-
-const severityColor: Record<Severity, string> = {
-	Critical: "bg-red-50 text-red-600 border-red-200",
-	High: "bg-orange-50 text-orange-600 border-orange-200",
-	Medium: "bg-yellow-50 text-yellow-700 border-yellow-200",
-	Low: "bg-blue-50 text-blue-600 border-blue-200",
-	Info: "bg-stone-100 text-stone-500 border-stone-200",
-};
 ---
 
 <BaseLayout>
-	<!-- Hero -->
-	<section class="hero-grid relative overflow-hidden">
-		<div class="absolute inset-0 bg-gradient-to-b from-accent/[0.08] via-accent-light/[0.03] to-transparent"></div>
-		<div class="max-w-5xl mx-auto px-6 pt-20 pb-16 relative">
-			<p class="text-accent-dim font-mono text-sm mb-4 animate-fade-up">Hello, I'm</p>
-			<h1 class="text-5xl md:text-7xl font-bold font-mono mb-4 animate-fade-up delay-1">
-				<span class="bg-gradient-to-r from-accent-dim to-accent-muted bg-clip-text text-transparent">
-					8l4nk
+	<!-- Hero Section -->
+	<section class="relative grid grid-cols-1 lg:grid-cols-12 gap-12 items-center min-h-[60vh] mb-16 md:mb-32">
+		<div class="lg:col-span-8 space-y-8">
+			<div class="inline-flex items-center gap-2 px-4 py-2 bg-secondary-container text-on-secondary-container rounded-full text-xs font-bold tracking-widest uppercase font-label animate-fade-up">
+				<span class="relative flex h-3 w-3">
+					<span class="security-pulse absolute inline-flex h-full w-full rounded-full bg-secondary opacity-75"></span>
+					<span class="relative inline-flex rounded-full h-3 w-3 bg-secondary"></span>
 				</span>
-			</h1>
-			<p class="text-xl md:text-2xl text-stone-500 mb-6 animate-fade-up delay-2">
-				절 건드리면 다 부십니다
-			</p>
-			<p class="text-stone-400 max-w-xl leading-relaxed animate-fade-up delay-3">
+				System Status: Secure
+			</div>
+
+			<div class="animate-fade-up delay-1">
+				<p class="font-headline text-xl text-on-surface-variant mb-2">Hello! I'm</p>
+				<h1 class="font-headline text-5xl md:text-7xl font-bold text-secondary leading-[1.1] tracking-tight mb-3">8l4nk</h1>
+				<p class="font-headline text-xl md:text-2xl font-semibold text-primary">절 건드리면 다 부십니다.</p>
+			</div>
+
+			<p class="text-xl md:text-2xl text-on-surface-variant font-body leading-relaxed max-w-2xl animate-fade-up delay-2">
 				해킹에 관심있는 일반인입니다.
 			</p>
+
+			<div class="flex flex-wrap gap-4 pt-4 animate-fade-up delay-3">
+				<a href="/achievements/" class="bg-primary text-on-primary px-8 py-4 rounded-full font-bold text-lg hover:bg-primary-dim transition-all shadow-xl shadow-primary/10 active:scale-95">
+					See my work
+				</a>
+				<a href="/about/" class="bg-surface-container-highest text-on-surface px-8 py-4 rounded-full font-bold text-lg hover:bg-surface-container-high transition-all active:scale-95">
+					Contact me
+				</a>
+			</div>
+		</div>
+
+		<div class="lg:col-span-4 relative hidden lg:block">
+			<div class="absolute inset-0 bg-primary-container/30 rounded-full blur-[80px] -z-10"></div>
+			<div class="space-y-4">
+				<div class="bg-tertiary-container/40 p-4 rounded-xl shadow-ambient inline-flex items-center gap-3">
+					<span class="material-symbols-outlined text-on-tertiary-container" style="font-variation-settings: 'FILL' 1;">bug_report</span>
+					<span class="text-on-tertiary-container font-bold text-sm font-label">Exploit Dev</span>
+				</div>
+				<div class="bg-secondary-container/40 p-4 rounded-xl shadow-ambient inline-flex items-center gap-3 ml-8">
+					<span class="material-symbols-outlined text-on-secondary-container" style="font-variation-settings: 'FILL' 1;">security</span>
+					<span class="text-on-secondary-container font-bold text-sm font-label">CVE Hunter</span>
+				</div>
+				<div class="bg-primary-container/50 p-4 rounded-xl shadow-ambient inline-flex items-center gap-3">
+					<span class="material-symbols-outlined text-on-primary-container" style="font-variation-settings: 'FILL' 1;">flag</span>
+					<span class="text-on-primary-container font-bold text-sm font-label">CTF Player</span>
+				</div>
+			</div>
 		</div>
 	</section>
 
-	<!-- Stats -->
-	<section class="max-w-5xl mx-auto px-6 -mt-4 mb-14">
-		<div class="grid grid-cols-3 gap-4 animate-fade-up delay-3">
-			<a href="/disclosures/" class="text-center p-4 rounded-xl bg-white border border-warm-border/60 shadow-sm hover:border-accent/30 transition-colors">
-				<div class="text-2xl md:text-3xl font-bold font-mono text-accent-dim">{disclosures.length}</div>
-				<div class="text-xs text-stone-400 mt-1">CVEs</div>
+	<!-- Vital Signs -->
+	<section class="space-y-10 mb-16 md:mb-32">
+		<div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-2 md:gap-6">
+			<h2 class="font-headline text-3xl md:text-4xl font-bold text-primary tracking-tight">Vital Signs</h2>
+			<p class="text-on-surface-variant font-medium font-body text-sm md:text-base">Tracking the impact.</p>
+		</div>
+		<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+			<a href="/disclosures/" class="tonal-card bg-surface-container-low p-6 md:p-10 rounded-xl space-y-4 group">
+				<div class="bg-surface-container-lowest w-16 h-16 rounded-full flex items-center justify-center shadow-ambient group-hover:scale-110 transition-transform">
+					<span class="material-symbols-outlined text-primary text-3xl" style="font-variation-settings: 'FILL' 1;">security</span>
+				</div>
+				<div>
+					<div class="text-3xl md:text-4xl font-headline font-bold text-primary">{disclosures.length}</div>
+					<div class="text-on-surface-variant font-medium uppercase tracking-widest text-xs font-label">CVEs Reported</div>
+				</div>
 			</a>
-			<a href="/achievements/" class="text-center p-4 rounded-xl bg-white border border-warm-border/60 shadow-sm hover:border-accent/30 transition-colors">
-				<div class="text-2xl md:text-3xl font-bold font-mono text-accent-dim">{achievements.filter(a => a.type === "CTF").length}</div>
-				<div class="text-xs text-stone-400 mt-1">CTFs</div>
+			<a href="/achievements/" class="tonal-card bg-primary-container p-6 md:p-10 rounded-xl space-y-4 group">
+				<div class="bg-surface-container-lowest w-16 h-16 rounded-full flex items-center justify-center shadow-ambient group-hover:scale-110 transition-transform">
+					<span class="material-symbols-outlined text-primary text-3xl" style="font-variation-settings: 'FILL' 1;">military_tech</span>
+				</div>
+				<div>
+					<div class="text-3xl md:text-4xl font-headline font-bold text-on-primary-container">{achievements.filter(a => a.type === "CTF").length}</div>
+					<div class="text-on-primary-container/70 font-medium uppercase tracking-widest text-xs font-label">CTF Competitions</div>
+				</div>
 			</a>
-			<a href="/experience/" class="text-center p-4 rounded-xl bg-white border border-warm-border/60 shadow-sm hover:border-accent/30 transition-colors">
-				<div class="text-2xl md:text-3xl font-bold font-mono text-accent-dim">{experience.length}</div>
-				<div class="text-xs text-stone-400 mt-1">Experience</div>
+			<a href="/experience/" class="tonal-card bg-tertiary-container/30 p-6 md:p-10 rounded-xl space-y-4 group">
+				<div class="bg-surface-container-lowest w-16 h-16 rounded-full flex items-center justify-center shadow-ambient group-hover:scale-110 transition-transform">
+					<span class="material-symbols-outlined text-tertiary text-3xl" style="font-variation-settings: 'FILL' 1;">terminal</span>
+				</div>
+				<div>
+					<div class="text-3xl md:text-4xl font-headline font-bold text-tertiary">{skills.reduce((acc, g) => acc + g.items.length, 0)}+</div>
+					<div class="text-tertiary/70 font-medium uppercase tracking-widest text-xs font-label">Core Skills</div>
+				</div>
 			</a>
 		</div>
 	</section>
 
 	<!-- Recent CTF -->
-	<section class="max-w-5xl mx-auto px-6 mb-14">
-		<div class="flex items-center justify-between mb-5">
-			<div class="flex items-center gap-3">
-				<span class="text-lg">🚩</span>
-				<h2 class="text-lg font-semibold text-stone-700">Recent CTF</h2>
-				<div class="flex-1 h-px bg-gradient-to-r from-warm-border to-transparent ml-2 w-16"></div>
+	<section class="bg-surface-container-lowest rounded-xl p-6 md:p-14 shadow-ambient mb-16 md:mb-32">
+		<div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-10">
+			<div>
+				<h2 class="font-headline text-3xl font-bold text-primary tracking-tight">Recent CTF</h2>
+				<p class="text-on-surface-variant font-body mt-1">Latest competition results.</p>
 			</div>
-			<a href="/achievements/" class="text-xs text-accent-dim font-mono hover:text-accent-muted transition-colors">
-				View all &rarr;
-			</a>
+			<a href="/achievements/" class="text-sm text-primary font-bold font-label uppercase tracking-widest hover:text-primary-dim transition-colors">View all &rarr;</a>
 		</div>
-		<div class="flex flex-col gap-2.5">
-			{recentCTF.map(ctf => (
-				<div class="flex items-center gap-4 p-3.5 rounded-xl border border-warm-border/60 bg-white shadow-sm">
-					<span class="text-xs font-mono text-stone-400 shrink-0 w-[5.5rem]">{ctf.date}</span>
-					<span class="font-medium text-stone-800 text-sm">{ctf.title}</span>
+		<div class="space-y-4">
+			{recentCTF.map((ctf) => (
+				<div class="flex items-center gap-6 p-4 rounded-xl bg-surface-container-low/50 hover:bg-surface-container-low transition-colors">
+					<span class="text-xs font-label font-bold text-on-surface-variant uppercase tracking-widest w-24 shrink-0">{ctf.date}</span>
+					<span class="font-headline font-bold text-on-surface text-sm flex-1">{ctf.title}</span>
 					{ctf.description && (
-						<span class="text-xs text-stone-400 ml-auto hidden sm:block shrink-0">{ctf.description}</span>
+						<span class="text-xs font-body text-on-surface-variant hidden sm:block shrink-0">{ctf.description}</span>
 					)}
 				</div>
 			))}
@@ -84,84 +122,68 @@ const severityColor: Record<Severity, string> = {
 	</section>
 
 	<!-- CVE Preview -->
-	<section class="max-w-5xl mx-auto px-6 mb-14">
-		<div class="flex items-center justify-between mb-5">
-			<div class="flex items-center gap-3">
-				<span class="text-lg">🛡</span>
-				<h2 class="text-lg font-semibold text-stone-700">CVE</h2>
-				<span class="text-xs text-stone-400 font-mono">{disclosures.length} reported</span>
-				<div class="flex-1 h-px bg-gradient-to-r from-warm-border to-transparent ml-2 w-16"></div>
+	<section class="bg-surface-container-low rounded-xl p-6 md:p-14 mb-16 md:mb-32">
+		<div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-10">
+			<div>
+				<h2 class="font-headline text-3xl font-bold text-primary tracking-tight">CVE</h2>
+				<p class="text-on-surface-variant font-body mt-1">{disclosures.length} vulnerabilities reported.</p>
 			</div>
-			<a href="/disclosures/" class="text-xs text-accent-dim font-mono hover:text-accent-muted transition-colors">
-				View all &rarr;
-			</a>
+			<a href="/disclosures/" class="text-sm text-primary font-bold font-label uppercase tracking-widest hover:text-primary-dim transition-colors">View all &rarr;</a>
 		</div>
-		<div class="p-5 rounded-xl border border-warm-border/60 bg-white shadow-sm">
-			<div class="flex flex-wrap gap-2 mb-4">
-				{disclosures.slice(0, 5).map(d => (
-					<code class="text-xs font-mono text-accent-dim bg-accent-soft px-2 py-1 rounded-md">{d.id}</code>
-				))}
-				{disclosures.length > 5 && (
-					<span class="text-xs text-stone-400 px-2 py-1">+{disclosures.length - 5} more</span>
-				)}
-			</div>
-			<div class="flex gap-3 text-xs">
-				<span class="px-2 py-0.5 rounded-md bg-red-50 text-red-600 border border-red-200">
-					Critical {disclosures.filter(d => d.severity === "Critical").length}
-				</span>
-				<span class="px-2 py-0.5 rounded-md bg-orange-50 text-orange-600 border border-orange-200">
-					High {disclosures.filter(d => d.severity === "High").length}
-				</span>
-				<span class="px-2 py-0.5 rounded-md bg-yellow-50 text-yellow-700 border border-yellow-200">
-					Medium {disclosures.filter(d => d.severity === "Medium").length}
-				</span>
-			</div>
-			<p class="text-xs text-stone-400 mt-3 italic">All CVEs currently reserved — details pending vendor patch</p>
+		<div class="flex flex-wrap gap-2 mb-6">
+			{disclosures.map(d => (
+				<span class="px-3 py-1.5 bg-surface-container-lowest rounded-full text-xs font-mono font-bold text-primary shadow-ambient">{d.id}</span>
+			))}
 		</div>
+		<div class="flex gap-3">
+			<span class="px-3 py-1.5 bg-error-container/20 text-error rounded-full text-xs font-bold font-label uppercase tracking-widest">Critical {disclosures.filter(d => d.severity === "Critical").length}</span>
+			<span class="px-3 py-1.5 bg-secondary-container/50 text-secondary rounded-full text-xs font-bold font-label uppercase tracking-widest">High {disclosures.filter(d => d.severity === "High").length}</span>
+			<span class="px-3 py-1.5 bg-surface-container-highest text-on-surface-variant rounded-full text-xs font-bold font-label uppercase tracking-widest">Medium {disclosures.filter(d => d.severity === "Medium").length}</span>
+		</div>
+		<p class="text-sm text-on-surface-variant/60 font-body mt-6 italic">All CVEs currently reserved — details pending vendor patch.</p>
 	</section>
 
 	<!-- Experience Preview -->
-	<section class="max-w-5xl mx-auto px-6 mb-14">
-		<div class="flex items-center justify-between mb-5">
-			<div class="flex items-center gap-3">
-				<span class="text-lg">💼</span>
-				<h2 class="text-lg font-semibold text-stone-700">Experience</h2>
-				<div class="flex-1 h-px bg-gradient-to-r from-warm-border to-transparent ml-2 w-16"></div>
+	<section class="bg-surface-container-lowest rounded-xl p-6 md:p-14 shadow-ambient mb-16 md:mb-32">
+		<div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-10">
+			<div>
+				<h2 class="font-headline text-3xl font-bold text-primary tracking-tight">Experience</h2>
+				<p class="text-on-surface-variant font-body mt-1">경력 및 활동</p>
 			</div>
-			<a href="/experience/" class="text-xs text-accent-dim font-mono hover:text-accent-muted transition-colors">
-				View all &rarr;
-			</a>
+			<a href="/experience/" class="text-sm text-primary font-bold font-label uppercase tracking-widest hover:text-primary-dim transition-colors">View all &rarr;</a>
 		</div>
-		<div class="flex flex-col gap-2.5">
-			{careers.map(exp => (
-				<div class="flex items-center gap-4 p-3.5 rounded-xl border border-warm-border/60 bg-white shadow-sm">
-					<span class="text-xs font-mono text-stone-400 shrink-0">{exp.period}</span>
-					<span class="font-bold text-stone-800 text-sm">{exp.organization}</span>
-					{exp.role && <span class="text-xs text-stone-400">{exp.role}</span>}
+		<div class="space-y-4">
+			{careers.map((exp) => (
+				<div class="flex items-center gap-6 p-4 rounded-xl bg-surface-container-low/50 hover:bg-surface-container-low transition-colors">
+					<span class="text-xs font-label font-bold text-on-surface-variant uppercase tracking-widest shrink-0">{exp.period}</span>
+					<span class="font-headline font-bold text-on-surface text-sm">{exp.organization}</span>
+					{exp.role && <span class="text-xs font-body text-on-surface-variant hidden sm:block shrink-0">{exp.role}</span>}
 				</div>
 			))}
 		</div>
 	</section>
 
 	<!-- Skills -->
-	<section class="max-w-5xl mx-auto px-6 mb-20">
-		<div class="flex items-center gap-3 mb-6">
-			<h2 class="text-lg font-semibold text-stone-700">Skills</h2>
-			<div class="flex-1 h-px bg-gradient-to-r from-warm-border to-transparent"></div>
-		</div>
-		<div class="grid sm:grid-cols-2 gap-6">
-			{skills.map(group => (
-				<div>
-					<h3 class="text-sm font-mono text-accent-dim mb-3">{group.category}</h3>
-					<div class="flex flex-wrap gap-2">
-						{group.items.map(item => (
-							<span class="px-3 py-1.5 rounded-lg bg-white border border-warm-border/60 text-sm text-stone-600 shadow-sm">
-								{item}
-							</span>
-						))}
-					</div>
-				</div>
+	<section class="mb-20">
+		<h2 class="font-headline text-3xl font-bold text-primary tracking-tight mb-8">Skill Set</h2>
+		<div class="flex flex-wrap gap-3">
+			{skills.flatMap(g => g.items).map(item => (
+				<span class="px-5 py-2.5 bg-tertiary-container/30 text-on-tertiary-container rounded-full font-label font-bold text-sm hover:bg-tertiary-container/50 transition-colors">{item}</span>
 			))}
+		</div>
+	</section>
+
+	<!-- CTA -->
+	<section class="text-center py-20 relative overflow-hidden bg-primary-container/20 rounded-xl mb-8">
+		<div class="absolute -bottom-10 -left-10 w-40 h-40 bg-secondary/10 rounded-full blur-3xl"></div>
+		<div class="absolute -top-10 -right-10 w-40 h-40 bg-tertiary/10 rounded-full blur-3xl"></div>
+		<div class="relative z-10 space-y-6 max-w-2xl mx-auto px-6">
+			<h2 class="font-headline text-4xl md:text-5xl font-bold text-primary tracking-tight">Ready to build something secure?</h2>
+			<p class="text-lg text-on-surface-variant font-body leading-relaxed">궁금한 점이나 협업 제안이 있다면 언제든 연락주세요.</p>
+			<div class="flex flex-col sm:flex-row gap-4 justify-center items-center pt-4">
+				<a href="/about/" class="bg-primary text-on-primary px-10 py-4 rounded-full font-bold text-lg hover:bg-primary-dim transition-all shadow-xl shadow-primary/15 active:scale-95">Get in Touch</a>
+				<a href="https://github.com/8l4nnk" target="_blank" class="bg-surface-container-lowest/80 text-primary px-10 py-4 rounded-full font-bold text-lg hover:bg-surface-container-lowest transition-all active:scale-95">Explore GitHub</a>
+			</div>
 		</div>
 	</section>
 </BaseLayout>
