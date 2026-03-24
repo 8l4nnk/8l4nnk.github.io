@@ -1,25 +1,45 @@
 ---
-
-import { getEntry, render } from "astro:content";
-import Markdown from "@components/misc/Markdown.astro";
-import I18nKey from "../i18n/i18nKey";
-import { i18n } from "../i18n/translation";
-import MainGridLayout from "../layouts/MainGridLayout.astro";
-
-const aboutPost = await getEntry("spec", "about");
-
-if (!aboutPost) {
-	throw new Error("About page content not found");
-}
-
-const { Content } = await render(aboutPost);
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { Icon } from "astro-icon/components";
 ---
-<MainGridLayout title={i18n(I18nKey.about)} description={i18n(I18nKey.about)}>
-    <div class="flex w-full rounded-[var(--radius-large)] overflow-hidden relative min-h-32">
-        <div class="card-base z-10 px-9 py-6 relative w-full ">
-            <Markdown class="mt-2">
-                <Content />
-            </Markdown>
-        </div>
-    </div>
-</MainGridLayout>
+
+<BaseLayout title="About" description="About 8l4nk">
+	<div class="max-w-3xl mx-auto px-6 py-12">
+		<h1 class="text-3xl font-bold text-stone-800 mb-8 animate-fade-up">About</h1>
+
+		<div class="space-y-6 animate-fade-up delay-1">
+			<p class="text-stone-500 leading-relaxed">
+				해킹에 관심있는 일반인입니다.
+				웹 보안, 시스템 해킹, CTF 대회를 중심으로 이것저것 건드려보고 있습니다.
+				연락하실 사항이 있다면 연락주세요.
+			</p>
+		</div>
+
+		<!-- Contact -->
+		<div class="mt-12 animate-fade-up delay-2">
+			<div class="flex items-center gap-3 mb-6">
+				<h2 class="text-lg font-semibold text-stone-700">Contact</h2>
+				<div class="flex-1 h-px bg-gradient-to-r from-warm-border to-transparent"></div>
+			</div>
+
+			<div class="flex flex-col gap-3">
+				<a href="https://github.com/8l4nnk" target="_blank" rel="noopener noreferrer"
+				   class="card-warm flex items-center gap-3 p-4 rounded-xl border border-warm-border/60 bg-white shadow-sm group">
+					<Icon name="fa6-brands:github" class="w-5 h-5 text-stone-400 group-hover:text-accent-dim transition-colors" />
+					<div>
+						<div class="text-sm font-medium text-stone-700">GitHub</div>
+						<div class="text-xs text-stone-400">github.com/8l4nnk</div>
+					</div>
+				</a>
+
+				<div class="flex items-center gap-3 p-4 rounded-xl border border-warm-border/60 bg-white shadow-sm">
+					<span class="text-stone-400 text-lg w-5 text-center">✉</span>
+					<div>
+						<div class="text-sm font-medium text-stone-700">Email</div>
+						<div class="text-xs text-stone-400">sungmin7816@gmail.com</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</BaseLayout>

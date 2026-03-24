@@ -1,0 +1,68 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { disclosures, type Severity } from "../data/portfolio";
+
+const severityColor: Record<Severity, string> = {
+	Critical: "bg-red-50 text-red-600 border-red-200",
+	High: "bg-orange-50 text-orange-600 border-orange-200",
+	Medium: "bg-yellow-50 text-yellow-700 border-yellow-200",
+	Low: "bg-blue-50 text-blue-600 border-blue-200",
+	Info: "bg-stone-100 text-stone-500 border-stone-200",
+};
+
+const criticalCount = disclosures.filter(d => d.severity === "Critical").length;
+const highCount = disclosures.filter(d => d.severity === "High").length;
+const mediumCount = disclosures.filter(d => d.severity === "Medium").length;
+---
+
+<BaseLayout title="Disclosures" description="취약점 제보 (CVE)">
+	<div class="max-w-5xl mx-auto px-6 py-12">
+		<h1 class="text-3xl font-bold text-stone-800 mb-2 animate-fade-up">Vulnerability Disclosures</h1>
+		<p class="text-stone-400 mb-6 animate-fade-up delay-1">
+			CVE {disclosures.length}건
+		</p>
+
+		<div class="mb-8 p-4 rounded-xl bg-accent-light/40 border border-accent/20 text-sm text-stone-500 animate-fade-up delay-1">
+			<span class="font-medium text-accent-muted">ℹ</span>
+			&nbsp;현재 모든 CVE가 예약(Reserved) 상태이며, 벤더 패치 완료 후 상세 내용이 공개될 예정입니다.
+		</div>
+
+		<!-- Summary -->
+		<div class="grid grid-cols-3 gap-3 mb-8 animate-fade-up delay-2">
+			<div class="text-center p-3 rounded-xl bg-red-50 border border-red-100">
+				<div class="text-xl font-bold font-mono text-red-500">{criticalCount}</div>
+				<div class="text-xs text-red-400">Critical</div>
+			</div>
+			<div class="text-center p-3 rounded-xl bg-orange-50 border border-orange-100">
+				<div class="text-xl font-bold font-mono text-orange-500">{highCount}</div>
+				<div class="text-xs text-orange-400">High</div>
+			</div>
+			<div class="text-center p-3 rounded-xl bg-yellow-50 border border-yellow-100">
+				<div class="text-xl font-bold font-mono text-yellow-600">{mediumCount}</div>
+				<div class="text-xs text-yellow-500">Medium</div>
+			</div>
+		</div>
+
+		<!-- CVE List (masked) -->
+		<div class="flex flex-col gap-3">
+			{disclosures.map((d, i) => (
+				<div
+					class="flex items-center gap-3 p-4 rounded-xl border border-warm-border/60 bg-white shadow-sm animate-fade-up"
+					style={`animation-delay: ${0.15 + i * 0.03}s`}
+				>
+					<code class="text-sm font-mono text-accent-dim shrink-0">{d.id}</code>
+					<span class:list={[
+						"px-2 py-0.5 rounded-md text-xs font-medium border shrink-0",
+						severityColor[d.severity]
+					]}>
+						{d.severity}
+					</span>
+					<span class="px-2 py-0.5 rounded-md text-xs bg-stone-100 text-stone-400 border border-stone-200 font-mono shrink-0">
+						Reserved
+					</span>
+					<span class="text-sm text-stone-300 italic ml-auto hidden sm:block">Details pending disclosure</span>
+				</div>
+			))}
+		</div>
+	</div>
+</BaseLayout>

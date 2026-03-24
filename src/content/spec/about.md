@@ -1,9 +1,46 @@
 # About
-This is the demo site for [Fuwari](https://github.com/saicaca/fuwari).
 
-::github{repo="saicaca/fuwari"}
+보안 연구와 취약점 분석을 전문으로 하는 보안 연구원입니다.
+웹 애플리케이션 보안, 시스템 해킹, CTF 대회를 중심으로 활동합니다.
 
-> ### Sources of images used in this site
-> - [Unsplash](https://unsplash.com/)
-> - [星と少女](https://www.pixiv.net/artworks/108916539) by [Stella](https://www.pixiv.net/users/93273965)
-> - [Rabbit - v1.4 Showcase](https://civitai.com/posts/586908) by [Rabbit_YourMajesty](https://civitai.com/user/Rabbit_YourMajesty)
+---
+
+## Skills
+
+**Offensive Security**
+- Web Application Security — XSS, SQL Injection, SSRF, CSRF, Authentication Bypass
+- System Hacking — Buffer Overflow, ROP, Heap Exploitation
+- Reverse Engineering — Binary Analysis, Malware Analysis
+- Network Security — Packet Analysis, Protocol Fuzzing
+
+**Languages & Tools**
+- Python, C/C++, JavaScript, Bash
+- Burp Suite, Wireshark, IDA Pro, Ghidra, Metasploit
+- Docker, Linux, Git
+
+---
+
+## CTF
+
+| 대회 | 연도 | 순위 | 분야 |
+|------|------|------|------|
+| - | - | - | - |
+
+---
+
+## Certifications
+
+> 보유 자격증을 여기에 추가하세요.
+
+---
+
+## Projects
+
+::github{repo="8l4nnk/8l4nnk.github.io"}
+
+---
+
+## Contact
+
+- **GitHub** — [github.com/8l4nnk](https://github.com/8l4nnk)
+- **Email** — your-email@example.com
