@@ -194,10 +194,10 @@ export const achievements: Achievement[] = [
 		description: "Team 따따",
 	},
 	{
-		title: "한양대학교 해킹방어대회 2위",
+		title: "한양대학교 해킹방어대회 2위 — 한국정보처리학회장상",
 		type: "CTF",
 		date: "2026.02.09",
-		description: "한국정보처리학회장상 — Team 손이시립대",
+		description: "Team 손이시립대",
 	},
 	{
 		title: "Blackhat MEA 2025 Final",
