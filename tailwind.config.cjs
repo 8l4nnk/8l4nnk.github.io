@@ -4,9 +4,9 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        headline: ["Space Grotesk", "sans-serif"],
-        body: ["Plus Jakarta Sans", "sans-serif"],
-        label: ["Plus Jakarta Sans", "sans-serif"],
+        headline: ["Outfit", "sans-serif"],
+        body: ["DM Sans", "sans-serif"],
+        label: ["DM Sans", "sans-serif"],
         mono: ["JetBrains Mono Variable", "JetBrains Mono", "monospace"],
       },
       colors: {
