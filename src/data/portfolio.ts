@@ -142,7 +142,7 @@ export const experience: Experience[] = [
 	},
 	{
 		type: "activity",
-		organization: "서울시립대학교 보안소모임 SHA",
+		organization: "대학교 보안소모임",
 		role: "멤버",
 		period: "2024.03 — 현재",
 		description: "",
@@ -197,7 +197,7 @@ export const achievements: Achievement[] = [
 		title: "한양대학교 해킹방어대회 2위 — 한국정보처리학회장상",
 		type: "CTF",
 		date: "2026.02.09",
-		description: "Team 손이시립대",
+		description: "Team 손이OO대",
 	},
 	{
 		title: "Blackhat MEA 2025 Final",
