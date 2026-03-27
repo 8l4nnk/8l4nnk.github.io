@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>8l4nk - Security Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'DM Sans', sans-serif; color: #3b2b29; background: #fff; padding: 48px 56px; max-width: 800px; margin: auto; line-height: 1.6; }
+  h1, h2, h3 { font-family: 'Outfit', sans-serif; }
+  h1 { font-size: 2.5rem; color: #9e4a5c; margin-bottom: 4px; }
+  h2 { font-size: 1.1rem; color: #a03742; border-bottom: 2px solid #ffc0c0; padding-bottom: 6px; margin: 32px 0 14px; text-transform: uppercase; letter-spacing: 0.08em; }
+  .subtitle { font-size: 1rem; color: #6a5755; margin-bottom: 4px; }
+  .contact { font-size: 0.85rem; color: #877270; margin-bottom: 32px; }
+  .contact a { color: #9e4a5c; text-decoration: none; }
+
+  table { width: 100%; border-collapse: collapse; margin: 8px 0 0; font-size: 0.85rem; }
+  th { text-align: left; font-family: 'Outfit', sans-serif; font-weight: 600; color: #6a5755; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.06em; padding: 6px 8px; border-bottom: 1.5px solid #f0ddd9; }
+  td { padding: 7px 8px; border-bottom: 1px solid #f5e8e5; color: #3b2b29; vertical-align: top; }
+  .severity { display: inline-block; padding: 2px 8px; border-radius: 99px; font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; }
+  .critical { background: #ffc3c4; color: #6a0c1e; }
+  .high { background: #ffc0c0; color: #6e2840; }
+  .medium { background: #f7d5d2; color: #6a5755; }
+
+  .exp-item { margin-bottom: 14px; }
+  .exp-header { display: flex; justify-content: space-between; align-items: baseline; }
+  .exp-org { font-family: 'Outfit', sans-serif; font-weight: 700; font-size: 0.95rem; color: #9e4a5c; }
+  .exp-period { font-size: 0.8rem; color: #877270; }
+  .exp-role { font-size: 0.85rem; color: #6a5755; }
+  .exp-desc { font-size: 0.82rem; color: #877270; margin-top: 2px; }
+
+  .skill-group { display: inline-block; margin-right: 24px; margin-bottom: 8px; vertical-align: top; }
+  .skill-cat { font-family: 'Outfit', sans-serif; font-weight: 600; font-size: 0.8rem; color: #a03742; margin-bottom: 4px; }
+  .skill-tag { display: inline-block; padding: 3px 10px; background: #ffedeb; border-radius: 99px; font-size: 0.78rem; color: #6e2840; margin: 2px 3px 2px 0; }
+
+  @media print {
+    body { padding: 32px 40px; }
+    h2 { break-after: avoid; }
+    table { break-inside: avoid; }
+    .exp-item { break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+
+<h1>8l4nk</h1>
+<div class="subtitle">Security Researcher</div>
+<div class="contact">
+  <a href="mailto:sungmin7816@gmail.com">sungmin7816@gmail.com</a> &nbsp;|&nbsp;
+  <a href="https://github.com/8l4nnk">github.com/8l4nnk</a> &nbsp;|&nbsp;
+  <a href="https://8l4nnk.github.io">8l4nnk.github.io</a>
+</div>
+
+<h2>CVE Disclosures</h2>
+<table>
+  <tr><th>CVE ID</th><th>Severity</th><th>Status</th></tr>
+  <tr><td>CVE-2026-33707</td><td><span class="severity critical">Critical</span></td><td>Reserved</td></tr>
+  <tr><td>CVE-2026-33618</td><td><span class="severity high">High</span></td><td>Reserved</td></tr>
+  <tr><td>CVE-2026-33704</td><td><span class="severity high">High</span></td><td>Reserved</td></tr>
+  <tr><td>CVE-2026-33706</td><td><span class="severity high">High</span></td><td>Reserved</td></tr>
+  <tr><td>CVE-2026-33710</td><td><span class="severity high">High</span></td><td>Reserved</td></tr>
+  <tr><td>CVE-2026-33736</td><td><span class="severity medium">Medium</span></td><td>Reserved</td></tr>
+  <tr><td>CVE-2026-33737</td><td><span class="severity medium">Medium</span></td><td>Reserved</td></tr>
+  <tr><td>CVE-2026-33708</td><td><span class="severity medium">Medium</span></td><td>Reserved</td></tr>
+  <tr><td>CVE-2026-33705</td><td><span class="severity medium">Medium</span></td><td>Reserved</td></tr>
+</table>
+
+<h2>CTF / A&D</h2>
+<table>
+  <tr><th>Date</th><th>Competition</th><th>Result</th><th>Team</th></tr>
+  <tr><td>2026.03.22</td><td>ENKI RedTeam CTF</td><td>2위</td><td>개인전</td></tr>
+  <tr><td>2026.03.16</td><td>SUCTF</td><td>2위</td><td>Team dda_com</td></tr>
+  <tr><td>2026.03.08</td><td>Dice CTF</td><td>open 4위 / global 5위</td><td>Team dda.com</td></tr>
+  <tr><td>2026.02.22</td><td>BITSCTF</td><td>1위</td><td>Team 따따</td></tr>
+  <tr><td>2026.02.09</td><td>한양대학교 해킹방어대회</td><td>2위 (한국정보처리학회장상)</td><td>Team 손이OO대</td></tr>
+  <tr><td>2025.12.02</td><td>Blackhat MEA 2025</td><td>Final</td><td>Team Runar</td></tr>
+  <tr><td>2025.11.28</td><td>Autohack 2025 자동차해킹방어대회</td><td>부산시장상</td><td>Team Runa</td></tr>
+  <tr><td>2025.11.23</td><td>LISA-thon</td><td>우수상</td><td>Team Runa</td></tr>
+  <tr><td>2025.07.17</td><td>Hacksium 2025</td><td>Final 7위</td><td>Team bbangnoobies</td></tr>
+</table>
+
+<h2>Competition</h2>
+<table>
+  <tr><th>Date</th><th>Competition</th><th>Result</th></tr>
+  <tr><td>2026.03.14</td><td>AI TOP 100</td><td>Final (개인전)</td></tr>
+</table>
+
+<h2>Experience</h2>
+<div class="exp-item">
+  <div class="exp-header">
+    <span class="exp-org">HSPACE Knights</span>
+    <span class="exp-period">2025.03 — 현재</span>
+  </div>
+  <div class="exp-role">학술팀</div>
+</div>
+<div class="exp-item">
+  <div class="exp-header">
+    <span class="exp-org">(주)OOO</span>
+    <span class="exp-period">2024.07 — 2024.08</span>
+  </div>
+  <div class="exp-role">모바일 취약점 연구기업 인턴</div>
+  <div class="exp-desc">모바일 애플리케이션 취약점 분석 및 연구 업무 수행</div>
+</div>
+
+<h2>Activities</h2>
+<div class="exp-item">
+  <div class="exp-header">
+    <span class="exp-org">한세사이버고등학교 정보보안실무 강의</span>
+    <span class="exp-period">2025.08.05</span>
+  </div>
+  <div class="exp-role">강사</div>
+</div>
+<div class="exp-item">
+  <div class="exp-header">
+    <span class="exp-org">대학교 보안소모임</span>
+    <span class="exp-period">2024.03 — 현재</span>
+  </div>
+  <div class="exp-role">멤버</div>
+</div>
+
+<h2>Skill Set</h2>
+<div class="skill-group">
+  <div class="skill-cat">Offensive Security</div>
+  <span class="skill-tag">Web App Pentesting</span>
+  <span class="skill-tag">System Hacking</span>
+  <span class="skill-tag">Reverse Engineering</span>
+</div>
+<div class="skill-group">
+  <div class="skill-cat">Languages</div>
+  <span class="skill-tag">Python</span>
+  <span class="skill-tag">C</span>
+  <span class="skill-tag">C++</span>
+</div>
+
+</body>
+</html>
