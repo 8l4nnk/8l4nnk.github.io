@@ -43,4 +43,3 @@
 ## Contact
 
 - **GitHub** — [github.com/8l4nnk](https://github.com/8l4nnk)
-- **Email** — your-email@example.com
