@@ -134,7 +134,7 @@ export const experience: Experience[] = [
 	},
 	{
 		type: "activity",
-		organization: "한세사이버고등학교 정보보안실무 강의",
+		organization: "OO고등학교 정보보안실무 강의",
 		role: "강사",
 		period: "2025.08.05",
 		description: "",
@@ -194,10 +194,10 @@ export const achievements: Achievement[] = [
 		description: "Team 따따",
 	},
 	{
-		title: "한양대학교 해킹방어대회 2위 — 한국정보처리학회장상",
+		title: "OO대학교 해킹방어대회 2위 — 한국정보처리학회장상",
 		type: "CTF",
 		date: "2026.02.09",
-		description: "Team 손이OO대",
+		description: "Team OOO",
 	},
 	{
 		title: "Blackhat MEA 2025 Final",
