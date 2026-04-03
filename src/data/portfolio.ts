@@ -170,6 +170,12 @@ export interface Achievement {
 
 export const achievements: Achievement[] = [
 	{
+		title: "CODEGATE 2026 Preliminary — Final",
+		type: "CTF",
+		date: "2026.03.28",
+		description: "",
+	},
+	{
 		title: "ENKI RedTeam CTF 2위",
 		type: "CTF",
 		date: "2026.03.22",
