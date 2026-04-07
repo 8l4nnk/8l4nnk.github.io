@@ -11,7 +11,8 @@
       "Bash(sed -i 's/한세사이버고등학교/OO고등학교/g' src/content/experience/03-hansei.md)",
       "Bash(sed -i 's/대학교 보안소모임/OO대학교 보안소모임/g' src/content/experience/04-sha.md)",
       "Bash(sed -i 's/sungmin7816@gmail.com/contact@8l4nk.dev/g' src/pages/about.astro)",
-      "Bash(sed -i 's/한양대학교/OO대학교/g' portfolio.html)"
+      "Bash(sed -i 's/한양대학교/OO대학교/g' portfolio.html)",
+      "Bash(pnpm astro:*)"
     ]
   }
 }
