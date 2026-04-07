@@ -1,0 +1,17 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(curl -s \"https://api.github.com/users/8l4nnk/repos?per_page=30&sort=updated\")",
+      "Bash(curl -s \"https://api.github.com/repos/8l4nnk/8Langk/contents/\")",
+      "Bash(curl:*)",
+      "WebFetch(domain:8l4nnk.github.io)",
+      "Bash(start:*)",
+      "Bash(pnpm run:*)",
+      "Bash(sed -i 's/한양대학교/OO대학교/g' src/content/achievements/05-hanyang.md)",
+      "Bash(sed -i 's/한세사이버고등학교/OO고등학교/g' src/content/experience/03-hansei.md)",
+      "Bash(sed -i 's/대학교 보안소모임/OO대학교 보안소모임/g' src/content/experience/04-sha.md)",
+      "Bash(sed -i 's/sungmin7816@gmail.com/contact@8l4nk.dev/g' src/pages/about.astro)",
+      "Bash(sed -i 's/한양대학교/OO대학교/g' portfolio.html)"
+    ]
+  }
+}

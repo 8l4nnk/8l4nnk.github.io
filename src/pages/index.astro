@@ -1,11 +1,21 @@
 ---
-import {
-	achievements,
-	disclosures,
-	experience,
-	skills,
-} from "../data/portfolio";
+import { getCollection } from "astro:content";
+import { skills } from "../data/portfolio";
 import BaseLayout from "../layouts/BaseLayout.astro";
+
+const allAchievements = await getCollection("achievements");
+const allDisclosures = await getCollection("disclosures");
+const allExperience = await getCollection("experience");
+
+const achievements = allAchievements
+	.map((e) => e.data)
+	.sort((a, b) => b.date.localeCompare(a.date));
+const disclosures = allDisclosures
+	.map((e) => e.data)
+	.sort((a, b) => b.id.localeCompare(a.id));
+const experience = allExperience
+	.map((e) => e.data)
+	.sort((a, b) => a.order - b.order);
 
 const recentCTF = achievements.filter((a) => a.type === "CTF").slice(0, 5);
 const careers = experience.filter((e) => e.type === "career");
@@ -45,16 +55,25 @@ const careers = experience.filter((e) => e.type === "career");
 
 		<div class="lg:col-span-4 relative hidden lg:flex justify-center">
 			<div class="absolute inset-0 bg-primary-container/30 rounded-full blur-[80px] -z-10"></div>
-			<div class="relative">
-				<div class="w-80 h-80 xl:w-96 xl:h-96 rounded-full overflow-hidden shadow-ambient-lg ring-4 ring-secondary-container">
-					<img src="/avatar.png" alt="8l4nk" class="w-full h-full object-cover" />
+			<div class="relative avatar-entrance group/avatar cursor-pointer" id="avatar-wrapper">
+				<div class="w-80 h-80 xl:w-96 xl:h-96 rounded-full overflow-hidden shadow-ambient-lg ring-4 ring-secondary-container group-hover/avatar:ring-secondary/50 group-hover/avatar:shadow-[0_0_50px_-4px_rgba(160,55,66,0.35)] transition-all duration-500">
+					<img src="/avatar.png" alt="8l4nk" class="w-full h-full object-cover transition-transform duration-500 group-hover/avatar:scale-110" />
+				</div>
+				<!-- Hidden terminal -->
+				<div id="hidden-terminal" class="absolute -bottom-20 left-1/2 -translate-x-1/2 w-72 bg-[#1a1210] rounded-xl p-4 shadow-2xl opacity-0 pointer-events-none transition-all duration-300 translate-y-2 z-50">
+					<div class="flex items-center gap-1.5 mb-2">
+						<div class="w-2 h-2 rounded-full bg-secondary"></div>
+						<div class="w-2 h-2 rounded-full bg-primary-container"></div>
+						<div class="w-2 h-2 rounded-full bg-surface-container-highest"></div>
+					</div>
+					<div id="terminal-text" class="font-mono text-xs text-primary-container leading-relaxed"></div>
 				</div>
 				<!-- Floating tags -->
-				<div class="absolute -top-2 -right-8 bg-secondary-container/60 px-3 py-1.5 rounded-full shadow-ambient flex items-center gap-2">
+				<div class="absolute -top-2 -right-8 bg-secondary-container/60 px-3 py-1.5 rounded-full shadow-ambient flex items-center gap-2 avatar-tag-1">
 					<span class="material-symbols-outlined text-on-secondary-container text-sm" style="font-variation-settings: 'FILL' 1;">security</span>
 					<span class="text-on-secondary-container font-bold text-xs font-label">CVE Hunter</span>
 				</div>
-				<div class="absolute -bottom-2 -left-6 bg-primary-container/60 px-3 py-1.5 rounded-full shadow-ambient flex items-center gap-2">
+				<div class="absolute -bottom-2 -left-6 bg-primary-container/60 px-3 py-1.5 rounded-full shadow-ambient flex items-center gap-2 avatar-tag-2">
 					<span class="material-symbols-outlined text-on-primary-container text-sm" style="font-variation-settings: 'FILL' 1;">flag</span>
 					<span class="text-on-primary-container font-bold text-xs font-label">CTF Player</span>
 				</div>
@@ -63,7 +82,7 @@ const careers = experience.filter((e) => e.type === "career");
 	</section>
 
 	<!-- Vital Signs -->
-	<section class="space-y-10 mb-16 md:mb-32">
+	<section class="space-y-10 mb-16 md:mb-32 animate-fade-up delay-4">
 		<div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-2 md:gap-6">
 			<h2 class="font-headline text-3xl md:text-4xl font-bold text-primary tracking-tight">Vital Signs</h2>
 			<p class="text-on-surface-variant font-medium font-body text-sm md:text-base">Tracking the impact.</p>
@@ -100,7 +119,7 @@ const careers = experience.filter((e) => e.type === "career");
 	</section>
 
 	<!-- Recent CTF -->
-	<section class="bg-surface-container-lowest rounded-xl p-6 md:p-14 shadow-ambient mb-16 md:mb-32">
+	<section class="bg-surface-container-lowest rounded-xl p-6 md:p-14 shadow-ambient mb-16 md:mb-32 animate-fade-up delay-5">
 		<div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-10">
 			<div>
 				<h2 class="font-headline text-3xl font-bold text-primary tracking-tight">Recent CTF</h2>
@@ -122,7 +141,7 @@ const careers = experience.filter((e) => e.type === "career");
 	</section>
 
 	<!-- CVE Preview -->
-	<section class="bg-surface-container-low rounded-xl p-6 md:p-14 mb-16 md:mb-32">
+	<section class="bg-surface-container-low rounded-xl p-6 md:p-14 mb-16 md:mb-32 animate-fade-up">
 		<div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-10">
 			<div>
 				<h2 class="font-headline text-3xl font-bold text-primary tracking-tight">CVE</h2>
@@ -144,7 +163,7 @@ const careers = experience.filter((e) => e.type === "career");
 	</section>
 
 	<!-- Experience Preview -->
-	<section class="bg-surface-container-lowest rounded-xl p-6 md:p-14 shadow-ambient mb-16 md:mb-32">
+	<section class="bg-surface-container-lowest rounded-xl p-6 md:p-14 shadow-ambient mb-16 md:mb-32 animate-fade-up">
 		<div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-10">
 			<div>
 				<h2 class="font-headline text-3xl font-bold text-primary tracking-tight">Experience</h2>
@@ -164,7 +183,7 @@ const careers = experience.filter((e) => e.type === "career");
 	</section>
 
 	<!-- Skills -->
-	<section class="mb-20">
+	<section class="mb-20 animate-fade-up">
 		<h2 class="font-headline text-3xl font-bold text-primary tracking-tight mb-8">Skill Set</h2>
 		<div class="flex flex-wrap gap-3">
 			{skills.flatMap(g => g.items).map(item => (
@@ -174,7 +193,7 @@ const careers = experience.filter((e) => e.type === "career");
 	</section>
 
 	<!-- CTA -->
-	<section class="text-center py-20 relative overflow-hidden bg-primary-container/20 rounded-xl mb-8">
+	<section class="text-center py-20 relative overflow-hidden bg-primary-container/20 rounded-xl mb-8 animate-fade-up">
 		<div class="absolute -bottom-10 -left-10 w-40 h-40 bg-secondary/10 rounded-full blur-3xl"></div>
 		<div class="absolute -top-10 -right-10 w-40 h-40 bg-secondary/10 rounded-full blur-3xl"></div>
 		<div class="relative z-10 space-y-6 max-w-2xl mx-auto px-6">
@@ -187,3 +206,50 @@ const careers = experience.filter((e) => e.type === "career");
 		</div>
 	</section>
 </BaseLayout>
+
+<script is:inline>
+(function() {
+	const avatar = document.getElementById('avatar-wrapper');
+	const terminal = document.getElementById('hidden-terminal');
+	const textEl = document.getElementById('terminal-text');
+	if (!avatar || !terminal || !textEl) return;
+
+	const lines = [
+		'> 제 사진에 궁금한게 있으신가요?',
+		'> 그럼 DM 주세요.',
+		'> 그 정도는 찾을 수 있지? 😉',
+	];
+
+	let isOpen = false;
+	let typing = false;
+
+	async function typeLines() {
+		typing = true;
+		textEl.innerHTML = '';
+		for (const line of lines) {
+			const lineEl = document.createElement('div');
+			textEl.appendChild(lineEl);
+			for (let i = 0; i < line.length; i++) {
+				lineEl.textContent = line.slice(0, i + 1);
+				await new Promise(r => setTimeout(r, 30));
+			}
+			await new Promise(r => setTimeout(r, 300));
+		}
+		typing = false;
+	}
+
+	avatar.addEventListener('click', () => {
+		if (typing) return;
+		if (isOpen) {
+			terminal.classList.add('opacity-0', 'pointer-events-none', 'translate-y-2');
+			terminal.classList.remove('opacity-100', 'translate-y-0');
+			isOpen = false;
+		} else {
+			terminal.classList.remove('opacity-0', 'pointer-events-none', 'translate-y-2');
+			terminal.classList.add('opacity-100', 'translate-y-0');
+			isOpen = true;
+			typeLines();
+		}
+	});
+})();
+</script>

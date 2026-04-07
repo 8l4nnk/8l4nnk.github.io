@@ -125,6 +125,44 @@ body {
 	padding: 0.75rem 1rem;
 }
 
+/* ===== Avatar animations ===== */
+@keyframes spinRing {
+	from { transform: rotate(0deg); }
+	to { transform: rotate(360deg); }
+}
+@keyframes spinRingReverse {
+	from { transform: rotate(360deg); }
+	to { transform: rotate(0deg); }
+}
+@keyframes avatarEntrance {
+	from { opacity: 0; transform: scale(0.85); filter: blur(8px); }
+	to { opacity: 1; transform: scale(1); filter: blur(0); }
+}
+@keyframes tagFloat1 {
+	from { opacity: 0; transform: translateY(12px) translateX(12px); }
+	to { opacity: 1; transform: translateY(0) translateX(0); }
+}
+@keyframes tagFloat2 {
+	from { opacity: 0; transform: translateY(12px) translateX(-12px); }
+	to { opacity: 1; transform: translateY(0) translateX(0); }
+}
+
+.avatar-spin {
+	animation: spinRing 8s linear infinite;
+}
+.avatar-spin-reverse {
+	animation: spinRingReverse 12s linear infinite;
+}
+.avatar-entrance {
+	animation: avatarEntrance 0.8s ease-out 0.3s both;
+}
+.avatar-tag-1 {
+	animation: tagFloat1 0.5s ease-out 0.9s both;
+}
+.avatar-tag-2 {
+	animation: tagFloat2 0.5s ease-out 1.1s both;
+}
+
 /* ===== Hide scrollbar ===== */
 .hide-scrollbar {
 	scrollbar-width: none;

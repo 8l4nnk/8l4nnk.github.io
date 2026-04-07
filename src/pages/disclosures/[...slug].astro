@@ -1,0 +1,62 @@
+---
+import { getCollection, render } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+type Severity = "Critical" | "High" | "Medium" | "Low" | "Info";
+
+export async function getStaticPaths() {
+	const allDisclosures = await getCollection("disclosures");
+	// Published인 것만 상세 페이지 생성
+	return allDisclosures
+		.filter((d) => d.data.status === "Published")
+		.map((entry) => ({
+			params: { slug: entry.id },
+			props: { entry },
+		}));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+
+const severityBg: Record<Severity, string> = {
+	Critical: "bg-secondary-container text-on-secondary-fixed",
+	High: "bg-primary-container/60 text-primary",
+	Medium: "bg-surface-container-high text-on-surface-variant",
+	Low: "bg-surface-container text-on-surface-variant",
+	Info: "bg-surface-container text-on-surface-variant",
+};
+---
+
+<BaseLayout title={entry.data.id} description={`${entry.data.id} - ${entry.data.severity} severity vulnerability`}>
+	<article class="max-w-3xl mx-auto">
+		<div class="mb-8 animate-fade-up">
+			<a href="/disclosures/" class="text-sm text-primary font-label font-bold uppercase tracking-widest hover:text-primary-dim transition-colors">
+				&larr; Back to Disclosures
+			</a>
+		</div>
+
+		<header class="mb-10 animate-fade-up delay-1">
+			<h1 class="font-headline text-3xl md:text-4xl font-bold text-primary tracking-tight mb-4">
+				{entry.data.id}
+			</h1>
+			<div class="flex flex-wrap items-center gap-3">
+				<span class:list={["px-3 py-1 rounded-full text-xs font-bold font-label uppercase tracking-widest", severityBg[entry.data.severity]]}>
+					{entry.data.severity}
+				</span>
+				<span class="px-3 py-1 bg-secondary-container/50 text-secondary rounded-full text-xs font-bold font-label uppercase tracking-widest">
+					{entry.data.status}
+				</span>
+			</div>
+		</header>
+
+		<div class="prose-custom animate-fade-up delay-2">
+			<Content />
+		</div>
+
+		<div class="mt-12 animate-fade-up delay-3">
+			<a href="/disclosures/" class="bg-surface-container-highest text-on-surface px-6 py-3 rounded-full font-bold text-sm hover:bg-surface-container-high transition-all active:scale-95 inline-block">
+				&larr; All Disclosures
+			</a>
+		</div>
+	</article>
+</BaseLayout>
