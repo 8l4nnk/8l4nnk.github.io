@@ -1,6 +1,18 @@
 ---
-import { type AchievementType, achievements } from "../data/portfolio";
+import { getCollection } from "astro:content";
 import BaseLayout from "../layouts/BaseLayout.astro";
+
+type AchievementType =
+	| "CTF"
+	| "Competition"
+	| "Certification"
+	| "Award"
+	| "Publication"
+	| "Other";
+const allAchievements = await getCollection("achievements");
+const achievements = allAchievements
+	.map((e) => e.data)
+	.sort((a, b) => b.date.localeCompare(a.date));
 
 const typeConfig: Record<AchievementType, { icon: string; bgClass: string }> = {
 	CTF: { icon: "flag", bgClass: "bg-secondary" },
@@ -41,7 +53,7 @@ const typeLabel: Record<string, string> = { Competition: "경진대회" };
 			const config = typeConfig[type];
 			const label = typeLabel[type] || type;
 			return (
-				<section class="bg-surface-container-lowest rounded-xl p-6 md:p-14 shadow-ambient">
+				<section class="bg-surface-container-lowest rounded-xl p-6 md:p-14 shadow-ambient animate-fade-up delay-2">
 					<div class="flex items-center gap-4 mb-10">
 						<div class:list={["w-12 h-12 rounded-full flex items-center justify-center shrink-0 shadow-lg", config.bgClass, `shadow-${type === 'CTF' ? 'secondary' : 'primary'}/20`]}>
 							<span class="material-symbols-outlined text-white text-xl" style="font-variation-settings: 'FILL' 1;">{config.icon}</span>

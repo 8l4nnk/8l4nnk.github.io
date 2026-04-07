@@ -1,24 +1,42 @@
 import { defineCollection, z } from "astro:content";
 
-const postsCollection = defineCollection({
+const achievementsCollection = defineCollection({
 	schema: z.object({
 		title: z.string(),
-		published: z.date(),
-		updated: z.date().optional(),
-		draft: z.boolean().optional().default(false),
+		type: z.enum([
+			"CTF",
+			"Competition",
+			"Certification",
+			"Award",
+			"Publication",
+			"Other",
+		]),
+		date: z.string(),
 		description: z.string().optional().default(""),
-		image: z.string().optional().default(""),
-		tags: z.array(z.string()).optional().default([]),
-		category: z.string().optional().nullable().default(""),
-		lang: z.string().optional().default(""),
-
-		/* For internal use */
-		prevTitle: z.string().default(""),
-		prevSlug: z.string().default(""),
-		nextTitle: z.string().default(""),
-		nextSlug: z.string().default(""),
 	}),
 });
+
+const disclosuresCollection = defineCollection({
+	schema: z.object({
+		id: z.string(),
+		severity: z.enum(["Critical", "High", "Medium", "Low", "Info"]),
+		status: z.enum(["Published", "Fixed", "Reserved", "Pending"]),
+	}),
+});
+
+const experienceCollection = defineCollection({
+	schema: z.object({
+		type: z.enum(["career", "activity"]),
+		organization: z.string(),
+		role: z.string().optional().default(""),
+		period: z.string(),
+		description: z.string().optional().default(""),
+		order: z.number(),
+	}),
+});
+
 export const collections = {
-	posts: postsCollection,
+	achievements: achievementsCollection,
+	disclosures: disclosuresCollection,
+	experience: experienceCollection,
 };

@@ -1,7 +1,11 @@
 ---
-import { experience } from "../data/portfolio";
+import { getCollection } from "astro:content";
 import BaseLayout from "../layouts/BaseLayout.astro";
 
+const allExperience = await getCollection("experience");
+const experience = allExperience
+	.map((e) => e.data)
+	.sort((a, b) => a.order - b.order);
 const careers = experience.filter((e) => e.type === "career");
 const activities = experience.filter((e) => e.type === "activity");
 ---
@@ -13,7 +17,7 @@ const activities = experience.filter((e) => e.type === "activity");
 			<p class="text-on-surface-variant font-body text-lg animate-fade-up delay-1">경력 및 활동</p>
 		</div>
 
-		<section>
+		<section class="animate-fade-up delay-2">
 			<div class="max-w-3xl">
 				<div class="relative space-y-10 md:space-y-12 ml-4 md:ml-0">
 					<!-- Timeline line -->
@@ -29,15 +33,6 @@ const activities = experience.filter((e) => e.type === "activity");
 								<div class="font-headline font-bold text-lg md:text-2xl text-primary">{exp.organization}</div>
 								{exp.role && <p class="text-on-surface-variant font-body font-medium text-sm">{exp.role}</p>}
 								{exp.description && <p class="text-on-surface-variant font-body leading-relaxed text-sm">{exp.description}</p>}
-								{exp.highlights.length > 0 && (
-									<ul class="space-y-1 pt-2">
-										{exp.highlights.map(h => (
-											<li class="text-on-surface-variant font-body text-sm flex items-start gap-2">
-												<span class="text-primary mt-1">▹</span>{h}
-											</li>
-										))}
-									</ul>
-								)}
 							</div>
 						</div>
 					))}
@@ -46,7 +41,7 @@ const activities = experience.filter((e) => e.type === "activity");
 		</section>
 
 		{activities.length > 0 && (
-			<section class="space-y-8">
+			<section class="space-y-8 animate-fade-up delay-3">
 				<h2 class="font-headline text-3xl font-bold text-primary tracking-tight">Activities</h2>
 				<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
 					{activities.map((act) => (
