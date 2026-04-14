@@ -54,16 +54,14 @@ const severityBg: Record<Severity, string> = {
 		<div class="bg-surface-container-lowest rounded-xl p-4 md:p-14 shadow-ambient space-y-3 animate-fade-up delay-4">
 			{disclosures.map((d) => {
 				const isPublished = d.status === "Published";
-				const Tag = isPublished ? "a" : "div";
 				return (
-					<Tag
-						href={isPublished ? `/disclosures/${d.slug}/` : undefined}
+					<div
 						class:list={[
 							"flex flex-wrap md:flex-nowrap items-center gap-2 md:gap-4 p-3 md:p-4 rounded-xl bg-surface-container-low/40 transition-colors",
-							"hover:bg-surface-container-low cursor-pointer group"
+							"hover:bg-surface-container-low group"
 						]}
 					>
-						<span class="font-mono font-bold text-xs md:text-sm text-primary shrink-0">{d.id}</span>
+						<a href={`https://nvd.nist.gov/vuln/detail/${d.id}`} target="_blank" rel="noopener noreferrer" class="font-mono font-bold text-xs md:text-sm text-primary shrink-0 hover:underline">{d.id}</a>
 						<span class:list={["px-2 md:px-3 py-0.5 md:py-1 rounded-full text-[0.65rem] md:text-xs font-bold font-label uppercase tracking-widest shrink-0", severityBg[d.severity]]}>
 							{d.severity}
 						</span>
@@ -73,12 +71,7 @@ const severityBg: Record<Severity, string> = {
 						]}>
 							{d.status}
 						</span>
-						{isPublished ? (
-							<span class="text-primary text-sm font-body ml-auto hidden md:block opacity-0 group-hover:opacity-100 transition-opacity">View details &rarr;</span>
-						) : (
-							<span class="text-on-surface-variant/40 text-sm font-body italic ml-auto hidden md:block">Details pending</span>
-						)}
-					</Tag>
+					</div>
 				);
 			})}
 		</div>
