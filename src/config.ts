@@ -8,7 +8,7 @@ import type {
 import { LinkPreset } from "./types/config";
 
 export const siteConfig: SiteConfig = {
-	title: "8l4nk",
+	title: "이성민의 포트폴리오",
 	subtitle: "절 건드리면 다 부십니다",
 	lang: "ko",
 	themeColor: {
@@ -47,7 +47,7 @@ export const navBarConfig: NavBarConfig = {
 
 export const profileConfig: ProfileConfig = {
 	avatar: "assets/images/demo-avatar.png",
-	name: "8l4nk",
+	name: "블랭",
 	bio: "Security Researcher | Bug Bounty Hunter | CTF Player",
 	links: [
 		{
